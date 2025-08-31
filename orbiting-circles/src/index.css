@@ -1,0 +1,11 @@
+
+@import "tailwindcss";
+
+body {
+  background-color: black;
+  color: #fff;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
