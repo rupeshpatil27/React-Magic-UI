@@ -23,6 +23,10 @@ function App() {
   const div1Ref = useRef(null);
   const div2Ref = useRef(null);
 
+  const container2Ref = useRef(null);
+  const div3Ref = useRef(null);
+  const div4Ref = useRef(null);
+
   return (
     <div className="relative">
       <h1 className="text-center mt-10 text-3xl font-bold">Animated Beam</h1>
@@ -47,6 +51,40 @@ function App() {
           containerRef={containerRef}
           fromRef={div1Ref}
           toRef={div2Ref}
+        />
+      </div>
+
+      <div
+        className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10 mt-10"
+        ref={container2Ref}
+      >
+        <div className="flex size-full flex-col items-stretch justify-between gap-10">
+          <div className="flex flex-row justify-between">
+            <Circle ref={div3Ref}>
+              <Icons.user />
+            </Circle>
+            <Circle ref={div4Ref}>
+              <Icons.openai />
+            </Circle>
+          </div>
+        </div>
+
+        <AnimatedBeam
+          containerRef={container2Ref}
+          fromRef={div3Ref}
+          toRef={div4Ref}
+          startYOffset={10}
+          endYOffset={10}
+          curvature={-20}
+        />
+        <AnimatedBeam
+          containerRef={container2Ref}
+          fromRef={div3Ref}
+          toRef={div4Ref}
+          startYOffset={-10}
+          endYOffset={-10}
+          curvature={20}
+          reverse
         />
       </div>
     </div>
