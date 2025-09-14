@@ -18,6 +18,7 @@ React Magic UI is a collection of reusable, customizable UI components built usi
 - **Orbiting Circle**
 - **BentoGrid**
 - **CircularProgressBar**
+- **AnimatedBeam**
 
 ---
 
