@@ -2,6 +2,12 @@ import React, { forwardRef, useRef } from "react";
 import { cn } from "./lib/utils";
 import AnimatedBeam from "./component/AnimatedBeam";
 
+import { FaHtml5, FaReact } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { FaCss3Alt } from "react-icons/fa";
+import { FaNodeJs } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
+
 const Circle = forwardRef(({ className, children }, ref) => {
   return (
     <div
@@ -28,64 +34,68 @@ function App() {
   const div4Ref = useRef(null);
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <h1 className="text-center mt-10 text-3xl font-bold">Animated Beam</h1>
 
-      <div
-        className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
-        ref={containerRef}
-      >
-        <div className="flex size-full flex-col items-stretch justify-between gap-10">
-          <div className="flex flex-row justify-between">
-            <Circle ref={div1Ref}>
-              <Icons.user />
-            </Circle>
-            <Circle ref={div2Ref}>
-              <Icons.openai />
-            </Circle>
+      <div className="w-full flex flex-col h-full gap-10 items-center">
+        <div
+          className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
+          ref={containerRef}
+        >
+          <div className="flex size-full flex-col items-stretch justify-between gap-10">
+            <div className="flex flex-row justify-between">
+              <Circle ref={div1Ref}>
+                <Icons.user />
+              </Circle>
+              <Circle ref={div2Ref}>
+                <Icons.openai />
+              </Circle>
+            </div>
           </div>
+
+          <AnimatedBeam
+            duration={3}
+            containerRef={containerRef}
+            fromRef={div1Ref}
+            toRef={div2Ref}
+          />
         </div>
 
-        <AnimatedBeam
-          duration={3}
-          containerRef={containerRef}
-          fromRef={div1Ref}
-          toRef={div2Ref}
-        />
-      </div>
-
-      <div
-        className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10 mt-10"
-        ref={container2Ref}
-      >
-        <div className="flex size-full flex-col items-stretch justify-between gap-10">
-          <div className="flex flex-row justify-between">
-            <Circle ref={div3Ref}>
-              <Icons.user />
-            </Circle>
-            <Circle ref={div4Ref}>
-              <Icons.openai />
-            </Circle>
+        <div
+          className="relative flex w-full max-w-[500px] items-center justify-center overflow-hidden p-10 mt-10"
+          ref={container2Ref}
+        >
+          <div className="flex size-full flex-col items-stretch justify-between gap-10">
+            <div className="flex flex-row justify-between">
+              <Circle ref={div3Ref}>
+                <Icons.user />
+              </Circle>
+              <Circle ref={div4Ref}>
+                <Icons.openai />
+              </Circle>
+            </div>
           </div>
+
+          <AnimatedBeam
+            containerRef={container2Ref}
+            fromRef={div3Ref}
+            toRef={div4Ref}
+            startYOffset={10}
+            endYOffset={10}
+            curvature={-20}
+          />
+          <AnimatedBeam
+            containerRef={container2Ref}
+            fromRef={div3Ref}
+            toRef={div4Ref}
+            startYOffset={-10}
+            endYOffset={-10}
+            curvature={20}
+            reverse
+          />
         </div>
 
-        <AnimatedBeam
-          containerRef={container2Ref}
-          fromRef={div3Ref}
-          toRef={div4Ref}
-          startYOffset={10}
-          endYOffset={10}
-          curvature={-20}
-        />
-        <AnimatedBeam
-          containerRef={container2Ref}
-          fromRef={div3Ref}
-          toRef={div4Ref}
-          startYOffset={-10}
-          endYOffset={-10}
-          curvature={20}
-          reverse
-        />
+        <CustomAnimatedBeam/>
       </div>
     </div>
   );
@@ -119,3 +129,95 @@ const Icons = {
     </svg>
   ),
 };
+
+
+export function CustomAnimatedBeam() {
+  const customBeamContainer = useRef(null);
+  const div5Ref = useRef(null);
+  const div6Ref = useRef(null);
+  const div7Ref = useRef(null);
+  const div8Ref = useRef(null);
+  const div9Ref = useRef(null);
+  const div10Ref = useRef(null);
+  const div11Ref = useRef(null);
+ 
+  return (
+    <div
+      className="relative flex h-full w-full items-center justify-center overflow-hidden p-10"
+      ref={customBeamContainer}
+    >
+      <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
+        <div className="flex flex-row items-center justify-between">
+          <Circle ref={div5Ref}>
+            <FaReact/>
+          </Circle>
+          <Circle ref={div9Ref}>
+            <FaHtml5/>
+          </Circle>
+        </div>
+        <div className="flex flex-row items-center justify-between">
+          <Circle ref={div6Ref}>
+            <IoLogoJavascript/>
+          </Circle>
+
+          <img src="/img1.jpg" ref={div8Ref} alt="img1" className="size-40 z-10 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]" />
+
+          <Circle ref={div10Ref}>
+            <FaCss3Alt />
+          </Circle>
+        </div>
+        <div className="flex flex-row items-center justify-between">
+          <Circle ref={div7Ref}>
+            <FaNodeJs />
+          </Circle>
+          <Circle ref={div11Ref}>
+            <FaGithub />
+          </Circle>
+        </div>
+      </div>
+ 
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div5Ref}
+        toRef={div8Ref}
+        curvature={-75}
+        endYOffset={-10}
+      />
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div6Ref}
+        toRef={div8Ref}
+      />
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div7Ref}
+        toRef={div8Ref}
+        curvature={75}
+        endYOffset={10}
+      />
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div9Ref}
+        toRef={div8Ref}
+        curvature={-75}
+        endYOffset={-10}
+        reverse
+      />
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div10Ref}
+        toRef={div8Ref}
+        reverse
+      />
+      <AnimatedBeam
+        containerRef={customBeamContainer}
+        fromRef={div11Ref}
+        toRef={div8Ref}
+        curvature={75}
+        endYOffset={10}
+        reverse
+      />
+    </div>
+  );
+}
+ 
